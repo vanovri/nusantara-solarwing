@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee9de">
+  <meta name="description" content="Nusantara SolarWing is an evidence-led concept for solar-assisted maritime UAV patrols. Explore a reproducible Natuna energy model using NASA POWER data.">
+  <title>Nusantara SolarWing | Energy-aware maritime patrol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mission.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="identity" href="#top" aria-label="Nusantara SolarWing home">
+      <span class="identity-mark" aria-hidden="true"><span></span></span>
+      <span>NUSANTARA<span class="identity-light">/SOLARWING</span></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#challenge">Challenge</a>
+      <a href="#lab">Energy lab</a>
+      <a href="#mission">Mission</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+    <a class="nav-cta" href="Nusantara_SolarWing_ISAST_2026_Public_Brief.pdf" download>Download paper <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ISAST 2026 / TRACK 01 / CONCEPT STUDY</div>
+        <h1 id="hero-title">Patrol farther.<br><em>Return with reserve.</em></h1>
+        <p class="hero-lead">A solar-assisted UAV concept for Indonesia's maritime edge. Its energy-aware planner tests every sortie against sunlight, aircraft load and a hard battery reserve.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#lab">Explore the energy model <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#evidence">See the evidence <span aria-hidden="true">↘</span></a>
+        </div>
+        <p class="hero-footnote">Independent student concept. Figures are modeled estimates, not flight-test results.</p>
+      </div>
+      <div class="hero-visual">
+        <img src="solar_uav_patrol.jpg" alt="Concept illustration of a solar-wing unmanned aircraft above Indonesian islands">
+        <div class="visual-top"><span>01 / MISSION CONCEPT</span><span>4.0°N · 108.0°E</span></div>
+        <div class="visual-bottom"><span>Solar-assisted fixed-wing UAV</span><span>Concept rendering</span></div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Key findings">
+      <div><strong>29<span>/30</span></strong><p>September days pass the modeled 08:00–16:00 reserve test</p></div>
+      <div><strong>894<span> Wh</span></strong><p>Nominal energy from a corrected 6S12P cell model</p></div>
+      <div><strong>−1.54<span> kWh</span></strong><p>Median 24-hour energy gap under baseline load</p></div>
+      <div class="strip-source">NASA POWER<br>SEPTEMBER 2025<br>4.0°N, 108.0°E</div>
+    </section>
+
+    <section class="section challenge" id="challenge">
+      <div class="section-intro">
+        <p class="section-index">01 / THE ENGINEERING PROBLEM</p>
+        <h2>Endurance starts with an honest energy budget.</h2>
+      </div>
+      <div class="challenge-body">
+        <p>Solar cells can extend a daylight patrol. Cloud, propulsion load and battery capacity still set a firm limit. A 24-hour claim must close both the daily energy balance and the night storage requirement.</p>
+        <div class="equation-row">
+          <div><span class="equation-label">LEVEL FLIGHT</span><strong>147.5 W</strong><small>Modeled propulsion + payload load</small></div>
+          <span class="equation-symbol" aria-hidden="true">×</span>
+          <div><span class="equation-label">24 HOURS</span><strong>3.54 kWh</strong><small>Continuous-flight demand</small></div>
+          <span class="equation-symbol" aria-hidden="true">vs</span>
+          <div><span class="equation-label">MEDIAN SOLAR</span><strong>2.00 kWh</strong><small>Modeled from historical GHI</small></div>
+        </div>
+        <p class="under-note">The gap remains before takeoff, climb, wind, thermal losses and weather forecast error. The proposed innovation therefore makes reserve-aware mission decisions, not perpetual-flight promises.</p>
+      </div>
+    </section>
+
+    <section class="lab" id="lab" aria-labelledby="lab-title">
+      <div class="lab-heading">
+        <div>
+          <p class="section-index">02 / INTERACTIVE FEASIBILITY LAB</p>
+          <h2 id="lab-title">What happens on a cloudy day?</h2>
+          <p>Replay NASA POWER hourly solar data near Natuna. Change flight load and inspect the reserve margin. The model assumes level flight from 08:00 to 16:00 WIB.</p>
+        </div>
+        <div class="data-stamp">HISTORICAL SCREEN<br>30 DAYS · SEP 2025<br>NOT LIVE TELEMETRY</div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-controls">
+          <div class="control-group">
+            <label for="daySelect">Solar day <span>NASA POWER, 2025</span></label>
+            <select id="daySelect" aria-describedby="dayHelp"></select>
+            <p id="dayHelp">Choose any day from the 30-day sample.</p>
+            <div class="preset-row" role="group" aria-label="Example days">
+              <button type="button" data-day="2025-09-03">Typical</button>
+              <button type="button" data-day="2025-09-11">Cloudy</button>
+              <button type="button" data-day="2025-09-20">Bright</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="loadSlider">Flight load <output id="loadOutput" for="loadSlider">147.5 W</output></label>
+            <input id="loadSlider" type="range" min="120" max="190" step="0.5" value="147.5">
+            <div class="range-labels"><span>120 W</span><span>190 W</span></div>
+          </div>
+          <div class="assumption-block">
+            <span>FIXED ASSUMPTIONS</span>
+            <p>1.65 m² PV area · 24% cell efficiency · 96.5% MPPT efficiency · 894 Wh nominal pack · 90% launch SoC · 20% reserve · 95% charge/discharge efficiency.</p>
+          </div>
+        </div>
+
+        <div class="lab-output" aria-live="polite">
+          <div class="result-header"><span>MISSION DECISION / 08:00–16:00 WIB</span><span id="dateLabel">03 SEP 2025</span></div>
+          <div class="result-main"><span class="status-dot" id="statusDot"></span><div><strong id="resultTitle">Calculating...</strong><p id="resultDetail"></p></div></div>
+          <div class="result-metrics">
+            <div><span>MINIMUM SoC</span><strong id="minSoc">—</strong></div>
+            <div><span>END SoC</span><strong id="endSoc">—</strong></div>
+            <div><span>SORTIE GHI</span><strong id="ghiTotal">—</strong></div>
+            <div><span>DAYS PASSING*</span><strong id="passCount">—</strong></div>
+          </div>
+          <p class="metric-note">*Same aircraft load and reserve rule applied to all 30 historical days. Screening result, not flight reliability.</p>
+        </div>
+      </div>
+
+      <div class="chart-panel">
+        <div class="chart-heading"><div><h3>Power through the day</h3><p>Hourly GHI converted to modeled solar electrical power. Flight load stays constant.</p></div><div class="legend"><span><i class="legend-solar"></i>Solar</span><span><i class="legend-load"></i>Load</span></div></div>
+        <canvas id="powerChart" height="290" role="img" aria-label="Hourly solar power and aircraft load chart"></canvas>
+        <div class="chart-axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00 WIB</span></div>
+      </div>
+    </section>
+
+    <section class="section method" id="method">
+      <div class="section-intro"><p class="section-index">03 / SYSTEM PROPOSAL</p><h2>Use energy to decide the route.</h2></div>
+      <div class="method-steps">
+        <article><span>01</span><h3>Estimate</h3><p>Combine recent irradiance, battery SoC and mission power into a short-horizon energy forecast.</p></article>
+        <article><span>02</span><h3>Constrain</h3><p>Keep a 20% reserve. Account for return energy, forecast uncertainty and power needed for safe recovery.</p></article>
+        <article><span>03</span><h3>Act</h3><p>Patrol, shorten or return based on the energy margin. A human operator confirms mission changes.</p></article>
+      </div>
+      <div class="method-note"><strong>Novelty to test</strong><p>Energy-aware return planning already exists. This concept tests a Natuna-specific solar screen and conservative return rule against a fixed-duration patrol. Compare reserve violations, covered area and early returns on a hardware-in-the-loop bench.</p></div>
+    </section>
+
+    <section class="mission" id="mission" aria-labelledby="mission-title">
+      <div class="mission-heading"><p class="section-index">04 / NATUNA MISSION GEOMETRY</p><h2 id="mission-title">A route with a return decision built in.</h2><p>Ranai Airport is the geographic reference. The offshore search box and 20 km distance are planning assumptions, not an approved flight route.</p></div>
+      <div class="mission-grid">
+        <div class="route-panel">
+          <div class="panel-kicker">FIVE-LEG CREEPING-LINE SEARCH</div>
+          <svg viewBox="0 0 500 260" role="img" aria-labelledby="route-title route-desc">
+            <title id="route-title">Illustrative five-leg maritime patrol sweep</title>
+            <desc id="route-desc">Five alternating 12 kilometre lines, two kilometres apart, connected by four short turns.</desc>
+            <path class="route-line" d="M56 56 H440 V93 H56 V130 H440 V167 H56 V204 H440"/>
+            <path class="route-arrow" d="m440 56 -13 -7 v14 z M56 93 l13 -7 v14 z m384 37 -13 -7 v14 z M56 167 l13 -7 v14 z m384 37 -13 -7 v14 z"/>
+            <text x="56" y="34">12 KM SEARCH LEG</text><text x="56" y="244">2 KM LANE SPACING · 12 × 8 KM PLANNING BOX</text>
+          </svg>
+          <p>Five search legs total 60 km. Four lane changes add 8 km. With at least 20 km each way from the Ranai reference, 108 km is a lower-bound route length. Actual egress and turns can add distance. The 96 km² box is an assigned footprint, not confirmed camera coverage.</p>
+          <p>For that ideal 108 km route, zero solar and a 5 m/s return headwind, the modeled pack ends at 47.2% SoC. This excludes extra exit distance, turns and climb.</p>
+          <a href="https://hubud.kemenhub.go.id/bandara/297" target="_blank" rel="noopener">Ranai airport reference point ↗</a>
+        </div>
+        <div class="decision-panel">
+          <div class="panel-kicker">DECISION RULE / 20 KM EXAMPLE</div>
+          <h3>How much battery must remain?</h3>
+          <p>With a 5 m/s return headwind and no credit for future sunlight, return requires 101.5 Wh from the pack. Add 178.8 Wh reserve and an 89.4 Wh buffer. The next 12 km leg costs another 38.3 Wh. These are modeled battery debits with 95% discharge efficiency.</p>
+          <div class="thresholds"><div><b>≤ 41.3% SoC</b><span>Return</span></div><div><b>41.3–45.6%</b><span>Shorten</span></div><div><b>≥ 45.6% SoC</b><span>Patrol</span></div></div>
+          <p class="decision-note">At every waypoint, maximize new search-line distance while keeping return energy, reserve and uncertainty buffer protected. Recompute from the actual position. A partial leg needs a safe exit.</p>
+        </div>
+      </div>
+      <div class="wind-panel">
+        <div><div class="panel-kicker">HEADWIND / 20 KM RETURN</div><h3>Wind changes the return budget.</h3><p>Constant 13.5 m/s airspeed and 147.5 W electrical load. Values exclude gust response and maneuvering.</p></div>
+        <table><thead><tr><th scope="col">Headwind</th><th scope="col">Ground speed</th><th scope="col">Return time</th><th scope="col">Aircraft energy</th></tr></thead><tbody><tr><td>0 m/s</td><td>13.5 m/s</td><td>24.7 min</td><td>60.7 Wh</td></tr><tr><td>5 m/s</td><td>8.5 m/s</td><td>39.2 min</td><td>96.4 Wh</td></tr><tr><td>8 m/s</td><td>5.5 m/s</td><td>60.6 min</td><td>149.0 Wh</td></tr></tbody></table>
+      </div>
+      <div class="impact-line"><strong>4.03 h</strong><span>Battery-only modeled endurance to 20% reserve</span><strong>8 h</strong><span>Solar-assisted screen on 29 of 30 historical no-wind days. Up to 3.97 h longer with the same pack.</span></div>
+    </section>
+
+    <section class="evidence" id="evidence">
+      <div class="section-intro"><p class="section-index">05 / EVIDENCE & LIMITS</p><h2>Every result has a source and a boundary.</h2></div>
+      <div class="evidence-grid">
+        <div><span class="evidence-number">01 / DATA</span><h3>Historical solar input</h3><p>NASA POWER hourly all-sky surface shortwave data at 4.0°N, 108.0°E, September 2025. UTC hours are shifted to WIB. Spatial grid data does not resolve local cloud shadows.</p><a href="https://power.larc.nasa.gov/docs/services/api/temporal/hourly/" target="_blank" rel="noopener">NASA POWER documentation ↗</a></div>
+        <div><span class="evidence-number">02 / HARDWARE</span><h3>Corrected battery count</h3><p>Panasonic lists 3.45 Ah typical and 3.60 V nominal for NCR18650GA. A 6S12P ideal cell count gives 894 Wh nominal before pack losses and protection mass.</p><a href="https://energy.panasonic.com/eu/business/products/lithium-ion/models/NCR18650GA" target="_blank" rel="noopener">Panasonic cell specifications ↗</a></div>
+        <div><span class="evidence-number">03 / SAFETY</span><h3>Human-reviewed detections</h3><p>A camera sighting without a matching AIS signal is an investigation cue. It is not proof of illegal fishing. The vessel-detection module remains a future work package.</p><a href="https://www.imo.org/en/OurWork/Safety/Pages/AIS.aspx" target="_blank" rel="noopener">IMO AIS guidance ↗</a></div>
+      </div>
+      <div class="evidence-footer"><p>No aircraft prototype, field flight, vessel classifier or operational authority is claimed. The present result is a reproducible concept model. The public brief excludes the private student ID appendix.</p><a class="button button-light" href="Nusantara_SolarWing_ISAST_2026_Public_Brief.pdf" download>Read the full concept paper <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+  <footer><div class="identity"><span class="identity-mark" aria-hidden="true"><span></span></span><span>NUSANTARA<span class="identity-light">/SOLARWING</span></span></div><span>ISAST 2026 · Student aerospace innovation concept</span><a href="#top">Back to top ↑</a></footer>
+  <script src="data/natuna_september_2025.js?v=2"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
